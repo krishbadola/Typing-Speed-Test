@@ -1,0 +1,543 @@
+/* ==============================
+   BASIC RESET
+================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ==============================
+   BODY
+================================= */
+
+body {
+    min-height: 100vh;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: white;
+
+    background: linear-gradient(
+        135deg,
+        #16001f,
+        #42005c,
+        #8a005f,
+        #d6005f
+    );
+
+    background-size: 400% 400%;
+
+    animation: gradientAnimation 12s ease infinite;
+
+    padding: 30px 15px;
+}
+
+
+/* Animated Background */
+
+@keyframes gradientAnimation {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+
+}
+
+
+/* ==============================
+   MAIN CONTAINER
+================================= */
+
+.container {
+    width: 100%;
+    max-width: 850px;
+
+    margin: auto;
+}
+
+
+/* ==============================
+   HEADER
+================================= */
+
+header {
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+header h1 {
+    font-size: 34px;
+
+    margin-bottom: 8px;
+}
+
+header p {
+    font-size: 15px;
+
+    opacity: 0.8;
+}
+
+
+/* ==============================
+   DIFFICULTY BUTTONS
+================================= */
+
+.difficulty-controls {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+.diff-btn {
+    border: none;
+
+    padding: 10px 20px;
+
+    border-radius: 7px;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    transition: 0.3s;
+}
+
+.diff-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+
+    transform: translateY(-2px);
+}
+
+.diff-btn.active {
+    background: white;
+
+    color: #8a005f;
+
+    font-weight: bold;
+}
+
+
+/* ==============================
+   STATISTICS
+================================= */
+
+.stats-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
+
+    margin-bottom: 18px;
+}
+
+.stat-box {
+    background: rgba(0, 0, 0, 0.35);
+
+    border-radius: 10px;
+
+    padding: 15px;
+
+    text-align: center;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.1);
+
+    backdrop-filter: blur(8px);
+}
+
+.stat-label {
+    font-size: 11px;
+
+    opacity: 0.7;
+
+    margin-bottom: 7px;
+}
+
+.stat-value {
+    font-size: 23px;
+
+    font-weight: bold;
+}
+
+
+/* ==============================
+   TYPING CARD
+================================= */
+
+.typing-card {
+    background: rgba(25, 0, 30, 0.78);
+
+    border-radius: 12px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0, 0, 0, 0.35);
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.08);
+}
+
+.passage-title {
+    font-size: 14px;
+
+    opacity: 0.7;
+
+    margin-bottom: 12px;
+}
+
+
+/* ==============================
+   TEXT DISPLAY
+================================= */
+
+.text-display {
+    background: rgba(0, 0, 0, 0.3);
+
+    border-radius: 8px;
+
+    padding: 20px;
+
+    min-height: 125px;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    margin-bottom: 18px;
+
+    word-wrap: break-word;
+}
+
+
+/* Character States */
+
+.text-display span {
+    position: relative;
+}
+
+
+/* Correct Character */
+
+.correct {
+    color: #53ff8a;
+}
+
+
+/* Incorrect Character */
+
+.incorrect {
+    color: #ff4f70;
+
+    background: rgba(255, 0, 50, 0.15);
+
+    border-radius: 2px;
+}
+
+
+/* Active Character */
+
+.active {
+    border-left: 2px solid white;
+
+    animation: cursorBlink 0.8s infinite;
+}
+
+@keyframes cursorBlink {
+
+    0% {
+        border-left-color: white;
+    }
+
+    50% {
+        border-left-color: transparent;
+    }
+
+    100% {
+        border-left-color: white;
+    }
+
+}
+
+
+/* ==============================
+   TEXTAREA
+================================= */
+
+#typing-input {
+    width: 100%;
+
+    height: 120px;
+
+    resize: none;
+
+    border: none;
+
+    outline: none;
+
+    border-radius: 8px;
+
+    padding: 15px;
+
+    background: white;
+
+    color: #222;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 16px;
+
+    margin-bottom: 15px;
+}
+
+#typing-input:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+
+
+/* ==============================
+   RESTART BUTTON
+================================= */
+
+.restart-btn {
+    display: block;
+
+    width: 100%;
+
+    border: none;
+
+    border-radius: 7px;
+
+    padding: 12px;
+
+    background: #ffca28;
+
+    color: #351000;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.restart-btn:hover {
+    transform: translateY(-2px);
+
+    background: #ffd95c;
+}
+
+
+/* ==============================
+   RESULT
+================================= */
+
+.result {
+    margin-top: 20px;
+
+    background: rgba(25, 0, 30, 0.85);
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    text-align: center;
+}
+
+.result h2 {
+    margin-bottom: 18px;
+}
+
+.result-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 10px;
+}
+
+.result-grid div {
+    background: rgba(255, 255, 255, 0.08);
+
+    padding: 15px;
+
+    border-radius: 8px;
+}
+
+.result-grid span {
+    display: block;
+
+    font-size: 12px;
+
+    opacity: 0.7;
+
+    margin-bottom: 5px;
+}
+
+.result-grid strong {
+    font-size: 22px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* ==============================
+   LEADERBOARD
+================================= */
+
+.leaderboard {
+    margin-top: 20px;
+
+    background: rgba(25, 0, 30, 0.78);
+
+    border-radius: 12px;
+
+    padding: 22px;
+}
+
+.leaderboard h2 {
+    font-size: 18px;
+
+    margin-bottom: 15px;
+}
+
+.leaderboard h2 span {
+    font-size: 12px;
+
+    opacity: 0.6;
+}
+
+#leaderboard-list {
+    padding-left: 25px;
+}
+
+#leaderboard-list li {
+    padding: 9px 5px;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    font-size: 14px;
+}
+
+#leaderboard-list li:last-child {
+    border-bottom: none;
+}
+
+
+/* ==============================
+   FINAL 10 SECOND ANIMATION
+================================= */
+
+.warning {
+    animation: timerWarning 0.5s infinite alternate;
+}
+
+@keyframes timerWarning {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.15);
+    }
+
+}
+
+
+/* ==============================
+   RESPONSIVE DESIGN
+================================= */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 20px 10px;
+    }
+
+    header h1 {
+        font-size: 27px;
+    }
+
+    .stats-container {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .result-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .difficulty-controls {
+        flex-wrap: wrap;
+    }
+
+    .diff-btn {
+        flex: 1;
+    }
+
+    .text-display {
+        font-size: 15px;
+
+        line-height: 1.7;
+    }
+
+}
+
+
+@media (max-width: 450px) {
+
+    .typing-card {
+        padding: 15px;
+    }
+
+    .stats-container {
+        gap: 8px;
+    }
+
+    .stat-box {
+        padding: 12px 5px;
+    }
+
+    .stat-value {
+        font-size: 19px;
+    }
+
+}
